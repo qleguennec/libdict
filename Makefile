@@ -28,6 +28,7 @@ SRC += dict_grow.c
 SRC += dict_init.c
 SRC += dict_lookup.c
 SRC += dict_str_add.c
+SRC += dict_str_export.c
 SRC += dict_str_hash.c
 SRC += dict_str_import.c
 SRC += dict_str_init.c
