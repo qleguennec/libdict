@@ -23,6 +23,7 @@ SRC += dict_add.c
 SRC += dict_del.c
 SRC += dict_find_ent.c
 SRC += dict_find_slot.c
+SRC += dict_free.c
 SRC += dict_grow.c
 SRC += dict_init.c
 SRC += dict_lookup.c

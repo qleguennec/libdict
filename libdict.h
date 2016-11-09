@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 00:15:41 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/09 04:50:11 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/09 05:19:07 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,19 @@ typedef struct		s_dict
 	int				(*cmp)(void *, void *);
 }					t_dict;
 
-size_t		dict_find_slot(t_dict *d, void *key);
-t_dict_ent	*dict_lookup(t_dict *d, void *key);
-t_dict_ent		*dict_find_ent(t_dict *d, void *key);
-void		dict_grow(t_dict *d);
-void		dict_add(t_dict *d, void *key, void *val, size_t size);
-long		dict_str_hash(char *s);
-void		dict_str_add(t_dict *d, void *key, char *val);
-t_dict_ent		*dict_str_lookup(t_dict *d, char *key);
-void		dict_vect_add(t_dict *d, void *key, t_vect val);
-void		dict_init(t_dict *d, long (*hashf)(void *), int (*cmp)(void *, void *));
-void		dict_str_init(t_dict *d);
-int			dict_del(t_dict *d, char *key);
+int					dict_del(t_dict *d, char *key);
+long				dict_str_hash(char *s);
+size_t				dict_find_slot(t_dict *d, void *key);
+t_dict_ent			*dict_find_ent(t_dict *d, void *key);
+t_dict_ent			*dict_str_lookup(t_dict *d, char *key);
+t_dict_ent			*dict_lookup(t_dict *d, void *key);
+void				dict_add(t_dict *d, void *key, void *val, size_t size);
+void				dict_free(t_dict *d);
+void				dict_grow(t_dict *d);
+void				dict_init
+	(t_dict *d, long (*hashf)(void *), int (*cmp)(void *, void *));
+void				dict_str_add(t_dict *d, void *key, char *val);
+void				dict_str_init(t_dict *d);
+void				dict_vect_add(t_dict *d, void *key, t_vect val);
 
 #endif

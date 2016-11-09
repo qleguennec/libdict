@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dict_del.c                                         :+:      :+:    :+:   */
+/*   dict_free.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/09 02:29:29 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/09 04:54:37 by qle-guen         ###   ########.fr       */
+/*   Created: 2016/11/09 05:14:12 by qle-guen          #+#    #+#             */
+/*   Updated: 2016/11/09 05:18:00 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libdict.h"
 
-int			dict_del(t_dict *d, char *key)
+void		dict_free(t_dict *d)
 {
-	t_dict_ent	*ent;
+	size_t	i;
 
-	if (!(ent = dict_find_ent(d, key)))
-		return (0);
-	ent->key = NULL;
-	ent->val.used = 0;
-	d->used--;
-	return (1);
+	i = -1;
+	while (++i < d->total)
+	{
+		free(d->ents[i].val.data);
+		d->ents[i].val.total = 0;
+		d->ents[i].val.used = 0;
+	}
+	free(d->ents);
+	d->used = 0;
+	d->total = 0;
 }
