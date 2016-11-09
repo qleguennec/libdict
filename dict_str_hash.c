@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 02:11:15 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/09 03:02:40 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/09 04:00:17 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ long		dict_str_hash(char *s)
 	len = 0;
 	while (*s)
 	{
-		h = (HASH_FACTOR * h) ^ *s;
+		h = (HASH_FACTOR * h) ^ *s++;
 		len++;
 	}
 	return (h ^ len);

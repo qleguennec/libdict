@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 03:34:39 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/09 03:43:59 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/09 04:03:44 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void		dict_init
 	(t_dict *d, long (*hashf)(void *), int (*cmp)(void *, void *))
 {
 	d->ents = ft_memalloc(INIT_LEN * sizeof(*d->ents));
+	d->total = INIT_LEN;
+	d->used = 0;
 	d->hashf = hashf;
 	d->cmp = cmp;
 }
