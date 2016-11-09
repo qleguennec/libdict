@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 02:29:29 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/09 04:51:56 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/09 04:53:41 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ int			dict_del(t_dict *d, char *key)
 		return (0);
 	ent->key = NULL;
 	ent->val.used = 0;
+	d->used--;
 	return (1);
 }
