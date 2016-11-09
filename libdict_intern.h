@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dict_str_import.c                                  :+:      :+:    :+:   */
+/*   libdict_intern.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/09 05:24:42 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/09 06:32:23 by qle-guen         ###   ########.fr       */
+/*   Created: 2016/11/09 06:20:55 by qle-guen          #+#    #+#             */
+/*   Updated: 2016/11/09 06:32:09 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef LIBDICT_INTERN_H
+# define LIBDICT_INTERN_H
+
 #include "libdict.h"
-#include "libdict_intern.h"
-#include "../malloc.h"
-#include "../libft/libft.h"
 
-int		dict_str_import(t_dict *d, char *s, char sep)
-{
-	char	*s1;
-	char	*key;
+void		lstadd(t_dict *d, void *p);
+void		lstfree(t_dict_fl *fl);
 
-	s1 = s;
-	while (*s1 && *s1 != sep)
-		s1++;
-	if (*s1 != sep)
-		return (0);
-	MALLOC_N(key, 1 + (s1 - s));
-	lstadd(d, key);
-	ft_memcpy(key, s, s1 - s);
-	key[s1 - s] = '\0';
-	dict_str_add(d, key, s1 + 1);
-	return (1);
-}
+#endif

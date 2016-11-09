@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 00:15:41 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/09 05:42:09 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/09 06:16:09 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@
 # define GROW_TRESHOLD	2.0 / 3.0
 # define HASH_FACTOR	1000003
 # define INIT_LEN		4
+
+typedef struct		s_dict_fl
+{
+	void			*p;
+	void			*next;
+}					t_dict_fl;
 
 typedef struct		s_dict_ent
 {
@@ -33,6 +39,7 @@ typedef struct		s_dict
 	size_t			total;
 	long			(*hashf)(void *);
 	int				(*cmp)(void *, void *);
+	t_dict_fl		*fl;
 }					t_dict;
 
 int					dict_del(t_dict *d, char *key);

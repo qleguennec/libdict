@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 03:34:39 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/09 04:03:44 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/09 06:18:56 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@ void		dict_init
 	d->used = 0;
 	d->hashf = hashf;
 	d->cmp = cmp;
+	d->fl = NULL;
 }

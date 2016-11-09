@@ -33,6 +33,7 @@ SRC += dict_str_import.c
 SRC += dict_str_init.c
 SRC += dict_str_lookup.c
 SRC += dict_vect_add.c
+SRC += util.c
 
 OBJECTS		=	$(addprefix $(BUILDDIR)/, $(SRC:%.c=%.o))
 

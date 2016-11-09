@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dict_str_import.c                                  :+:      :+:    :+:   */
+/*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/09 05:24:42 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/09 06:32:23 by qle-guen         ###   ########.fr       */
+/*   Created: 2016/11/09 06:15:03 by qle-guen          #+#    #+#             */
+/*   Updated: 2016/11/09 06:29:46 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libdict.h"
-#include "libdict_intern.h"
-#include "../malloc.h"
 #include "../libft/libft.h"
 
-int		dict_str_import(t_dict *d, char *s, char sep)
+void		lstfree(t_dict_fl *fl)
 {
-	char	*s1;
-	char	*key;
+	t_dict_fl	*l;
 
-	s1 = s;
-	while (*s1 && *s1 != sep)
-		s1++;
-	if (*s1 != sep)
-		return (0);
-	MALLOC_N(key, 1 + (s1 - s));
-	lstadd(d, key);
-	ft_memcpy(key, s, s1 - s);
-	key[s1 - s] = '\0';
-	dict_str_add(d, key, s1 + 1);
-	return (1);
+	if (!fl)
+		return ;
+	l = fl->next;
+	free(fl->p);
+	free(fl);
+	lstfree(l);
+}
+
+void		lstadd(t_dict *d, void *p)
+{
+	t_dict_fl	*fl;
+
+	fl = ft_memalloc(sizeof(*fl));
+	fl->p = p;
+	if (d->fl)
+		fl->next = d->fl;
+	d->fl = fl;
 }
