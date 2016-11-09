@@ -24,9 +24,11 @@ SRC += dict_del.c
 SRC += dict_find_ent.c
 SRC += dict_find_slot.c
 SRC += dict_grow.c
+SRC += dict_init.c
 SRC += dict_lookup.c
 SRC += dict_str_add.c
 SRC += dict_str_hash.c
+SRC += dict_str_init.c
 SRC += dict_str_lookup.c
 SRC += dict_vect_add.c
 
