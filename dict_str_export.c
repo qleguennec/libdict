@@ -6,12 +6,12 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 06:37:49 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/09 08:27:59 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/09 19:24:50 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libdict.h"
-#include "../malloc.h"
+#include "../libft/malloc.h"
 #include "../libft/libft.h"
 
 char		**dict_str_export(t_dict *d, char sep)

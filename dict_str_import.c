@@ -6,13 +6,13 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 05:24:42 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/09 06:33:08 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/09 19:24:59 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libdict.h"
 #include "libdict_intern.h"
-#include "../malloc.h"
+#include "../libft/malloc.h"
 #include "../libft/libft.h"
 
 int		dict_str_import(t_dict *d, char *s, char sep)
