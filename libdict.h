@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 00:15:41 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/09 03:45:10 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/09 04:50:11 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ t_dict_ent		*dict_str_lookup(t_dict *d, char *key);
 void		dict_vect_add(t_dict *d, void *key, t_vect val);
 void		dict_init(t_dict *d, long (*hashf)(void *), int (*cmp)(void *, void *));
 void		dict_str_init(t_dict *d);
+int			dict_del(t_dict *d, char *key);
 
 #endif
