@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 02:29:29 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/09 04:54:37 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/09 06:04:12 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int			dict_del(t_dict *d, char *key)
 
 	if (!(ent = dict_find_ent(d, key)))
 		return (0);
+	free(ent->key);
 	ent->key = NULL;
 	ent->val.used = 0;
 	d->used--;

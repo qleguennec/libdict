@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 05:14:12 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/09 05:18:00 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/09 06:04:36 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void		dict_free(t_dict *d)
 	i = -1;
 	while (++i < d->total)
 	{
+		free(d->ents[i].key);
 		free(d->ents[i].val.data);
 		d->ents[i].val.total = 0;
 		d->ents[i].val.used = 0;
