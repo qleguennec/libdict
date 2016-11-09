@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dict_find_slot.c                                   :+:      :+:    :+:   */
+/*   dict_iter.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/09 00:35:37 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/09 22:54:10 by qle-guen         ###   ########.fr       */
+/*   Created: 2016/11/09 20:29:10 by qle-guen          #+#    #+#             */
+/*   Updated: 2016/11/09 21:53:24 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libdict.h"
 
-size_t		dict_find_slot(t_dict *d, void *key)
+int		dict_iter(t_dict *d, t_dict_ent **ent, size_t *n)
 {
-	size_t	i;
-
-	i = d->hashf(key) % d->total;
-	while (d->ents[i].key)
+	if (*n > d->used)
+		return (0);
+	while ((size_t)(*ent - d->ents) < d->total)
 	{
-		if (!d->cmp(key, d->ents[i].key))
-			return (i);
-		i = (i + 1) % d->total;
+		if ((*ent)->key)
+		{
+			(*n)++;
+			return (1);
+		}
+		(*ent)++;
 	}
-	return (i);
+	return (0);
 }

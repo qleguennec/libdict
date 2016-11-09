@@ -6,20 +6,18 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 02:29:29 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/09 06:13:26 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/09 23:02:26 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libdict.h"
 
-int			dict_del(t_dict *d, char *key)
+int			dict_del(t_dict *d, void *key)
 {
 	t_dict_ent	*ent;
 
 	if (!(ent = dict_find_ent(d, key)))
 		return (0);
-	ent->key = NULL;
-	ent->val.used = 0;
-	d->used--;
+	dict_ent_del(d, ent);
 	return (1);
 }

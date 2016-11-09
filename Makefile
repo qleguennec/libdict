@@ -21,11 +21,13 @@ END			=	"\033[0m"
 
 SRC += dict_add.c
 SRC += dict_del.c
+SRC += dict_ent_del.c
 SRC += dict_find_ent.c
 SRC += dict_find_slot.c
 SRC += dict_free.c
 SRC += dict_grow.c
 SRC += dict_init.c
+SRC += dict_iter.c
 SRC += dict_lookup.c
 SRC += dict_str_add.c
 SRC += dict_str_export.c

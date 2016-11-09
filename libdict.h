@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 00:15:41 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/09 07:35:40 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/09 22:19:38 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct		s_dict
 	t_dict_fl		*fl;
 }					t_dict;
 
-int					dict_del(t_dict *d, char *key);
+int					dict_del(t_dict *d, void *key);
 long				dict_str_hash(char *s);
 size_t				dict_find_slot(t_dict *d, void *key);
 t_dict_ent			*dict_find_ent(t_dict *d, void *key);
@@ -56,7 +56,9 @@ void				dict_init
 void				dict_str_add(t_dict *d, void *key, char *val);
 void				dict_str_init(t_dict *d);
 void				dict_vect_add(t_dict *d, void *key, t_vect val);
-int		dict_str_import(t_dict *d, char *s, char sep);
-char		**dict_str_export(t_dict *d, char sep);
+int		dict_str_import(t_dict *d, char *s, char *sep);
+char		**dict_str_export(t_dict *d, char *sep);
+int			dict_iter(t_dict *d, t_dict_ent **ent, size_t *n);
+void	dict_ent_del(t_dict *d, t_dict_ent *ent);
 
 #endif

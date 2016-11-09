@@ -6,13 +6,12 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 03:34:39 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/09 19:24:40 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/09 21:40:58 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libdict.h"
 #include "../libft/libft.h"
-#include "../libft/malloc.h"
 
 void		dict_init
 	(t_dict *d, long (*hashf)(void *), int (*cmp)(void *, void *))
