@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 00:51:48 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/09 04:50:01 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/09 05:20:49 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,5 @@ void		dict_grow(t_dict *d)
 	i = -1;
 	while (++i < d->used)
 		dict_vect_add(d, old[i].key, old[i].val);
+	free(old);
 }
