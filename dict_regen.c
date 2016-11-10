@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 03:33:32 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/10 17:37:44 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/10 18:35:01 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ void	dict_regen(t_dict *d, size_t grow)
 		if (USED(d->ents[i]))
 			dict_vect_add(&new, d->ents[i].key, d->ents[i].val);
 		else if (DELETED(d->ents[i]))
+		{
+			d->ents[i].val.used = 0;
+			ft_lstadd(&d->avail, d->ents[i].val.data, d->ents[i].val.total);
 			d->del--;
+		}
 		i++;
 	}
 	d->total = new.total;

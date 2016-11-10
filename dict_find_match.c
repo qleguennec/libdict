@@ -19,7 +19,7 @@ t_dict_ent	*dict_find_match(t_dict *d, void *key)
 
 	i = d->hash_f(key) % d->total;
 	j = 0;
-	while (EXISTS(d->ents[i]))
+	while (EXIST(d->ents[i]))
 	{
 		if (MATCH(d->ents[i], key))
 			return (&d->ents[i]);
