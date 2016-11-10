@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 00:15:41 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/10 22:24:57 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/10 23:24:16 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void				dict_free(t_dict *d);
 void				dict_free(t_dict *d);
 void				dict_init
 	(t_dict *d, size_t len, long (*hashf)(void *), t_cmp_f cmp_f);
-void				dict_regen(t_dict *d, size_t grow);
+void				dict_regen(t_dict *d, int grow);
 void				dict_str_add(t_dict *d, void *key, char *val);
 void				dict_str_init(t_dict *d, size_t len);
 void				dict_vect_add(t_dict *d, void *key, t_vect val);

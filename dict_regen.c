@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 03:33:32 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/10 21:10:52 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/10 23:09:05 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,16 @@ static void		fill(t_dict *d, t_dict *new)
 	}
 }
 
-void			dict_regen(t_dict *d, size_t grow)
+void			dict_regen(t_dict *d, int grow)
 {
+	size_t		newsize;
 	t_dict		new;
 
-	if (d->total == 1)
-		grow = 4;
+	if (grow)
+		newsize = d->total < 10 ? 16 : d->total * GROWTH_FACTOR;
 	else
-		grow = grow ? grow * DICT_GROWTH_FACTOR * d->total : d->total;
-	dict_init(&new, grow, d->hash_f, d->cmp_f);
+		newsize = d->total;
+	dict_init(&new, newsize, d->hash_f, d->cmp_f);
 	fill(d, &new);
 	d->total = new.total;
 	d->used = new.used;

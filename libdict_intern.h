@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 06:20:55 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/10 20:51:22 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/10 23:25:04 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@
 
 # define MATCH(e, k)			(!d->cmp_f(e.key, k))
 
-# define DICT_GROWTH_FACTOR		GROWTH_FACTOR
 # define GROW_TRESHOLD			1.0 / DICT_GROWTH_FACTOR
-# define REGEN_TRESHOLD			0
+# define REGEN_TRESHOLD			1.0 / 4.0
 # define HASH_FACTOR			1000003
 
 #endif
