@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 05:14:12 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/09 21:53:57 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/10 00:01:40 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void		dict_free(t_dict *d)
 	size_t		n;
 
 	n = 0;
+	ent = d->ents;
 	while (dict_iter(d, &ent, &n))
 	{
 		dict_ent_del(d, ent);
 		ent->val.total = 0;
 		free(ent->val.data);
-		free(ent);
 		ent++;
 	}
 	free(d->ents);

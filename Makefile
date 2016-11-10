@@ -1,14 +1,11 @@
-# Directories
 PROJECT		=	libdict
 BINDIR		?=	.
 BUILDDIR	?=	build
 NAME		=	$(BINDIR)/libdict.a
 
-# Compiler options
 CC			=	clang
-CFLAGS		=	$(addprefix -I,$(INCLUDE)) -Wall -Wextra -Werror -g
+CFLAGS		=	-Wall -Wextra -Werror -g
 
-# Color output
 BLACK		=	"\033[0;30m"
 RED			=	"\033[0;31m"
 GREEN		=	"\033[0;32m"
@@ -19,25 +16,10 @@ CYAN		=	"\033[0;36m"
 WHITE		=	"\033[0;37m"
 END			=	"\033[0m"
 
-SRC += dict_add.c
-SRC += dict_del.c
-SRC += dict_ent_del.c
-SRC += dict_find_ent.c
-SRC += dict_find_slot.c
-SRC += dict_free.c
-SRC += dict_grow.c
-SRC += dict_init.c
-SRC += dict_iter.c
-SRC += dict_lookup.c
-SRC += dict_str_add.c
-SRC += dict_str_export.c
-SRC += dict_str_hash.c
-SRC += dict_str_import.c
-SRC += dict_str_init.c
-SRC += dict_str_lookup.c
-SRC += dict_vect_add.c
-SRC += util.c
+FIND		=	find . -maxdepth 1 -printf "%f\n"
 
+SRCEX		=
+SRC			=	$(filter-out $(SRCEX), $(filter %.c, $(shell $(FIND) -type f)))
 OBJECTS		=	$(addprefix $(BUILDDIR)/, $(SRC:%.c=%.o))
 
 all: $(NAME)
@@ -52,14 +34,20 @@ $(NAME): $(OBJECTS)
 	@ar rc $(@) $(OBJECTS)
 	@echo OK
 
-.PHONY: clean fclean re
+.PHONY: clean sclean fclean re r
 
 clean:
 	@printf $(YELLOW)$(PROJECT)$(END)'\t'
-	rm -rf build/
+	rm -rf $(BUILDDIR)
+
+sclean:
+	@printf $(YELLOW)$(PROJECT)$(END)'\t'
+	rm -rf $(OBJECTS)
 
 fclean: clean
 	@printf $(YELLOW)$(PROJECT)$(END)'\t'
 	rm -rf $(NAME)
+
+r: sclean all
 
 re: fclean all
