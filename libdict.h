@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 00:15:41 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/10 19:30:21 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/10 20:07:31 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ typedef struct		s_dict
 	long			(*hash_f)(void *);
 	t_cmp_f			cmp_f;
 	t_list			*free;
-	t_list			*avail;
 }					t_dict;
 
 char				**dict_str_export(t_dict *d, char *sep);
@@ -58,7 +57,6 @@ void				dict_free(t_dict *d);
 void				dict_free(t_dict *d);
 void				dict_init
 	(t_dict *d, size_t len, long (*hashf)(void *), t_cmp_f cmp_f);
-void				dict_mem_reuse(t_dict *d, t_dict_ent *ent);
 void				dict_regen(t_dict *d, size_t grow);
 void				dict_str_add(t_dict *d, void *key, char *val);
 void				dict_str_init(t_dict *d, size_t len);
