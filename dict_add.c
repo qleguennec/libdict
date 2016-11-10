@@ -6,17 +6,17 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 00:53:07 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/10 07:08:17 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/10 17:46:05 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libdict.h"
+#include "libdict_intern.h"
 
 void		dict_add(t_dict *d, void *key, void *val, size_t size)
 {
 	t_dict_ent	*ent;
 
-	ent = dict_find_ent(d, key);
+	ent = dict_find_empty(d, key);
 	ent->key = key;
 	vect_add(&ent->val, val, size);
 	d->used++;

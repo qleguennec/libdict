@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 21:46:21 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/10 07:13:57 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/10 17:17:14 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	dict_ent_del(t_dict *d, t_dict_ent *ent)
 	ent->val.used = 0;
 	d->del++;
 	d->used--;
-#include <stdio.h>
-	//printf("%lu / %lu = %f\n", d->del, d->used, (float)d->del / (float)d->used);
 	if ((float)d->del / (float)d->used > REGEN_TRESHOLD)
 		dict_regen(d, 0);
 }

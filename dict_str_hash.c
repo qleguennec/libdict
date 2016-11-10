@@ -6,11 +6,11 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 02:11:15 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/10 03:12:15 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/10 17:46:14 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libdict.h"
+#include "libdict_intern.h"
 
 long		dict_str_hash(char *s)
 {

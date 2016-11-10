@@ -17,7 +17,7 @@ t_dict_ent	*dict_find_match(t_dict *d, void *key)
 	size_t	i;
 	long	j;
 
-	i = d->hashf(key) % d->total;
+	i = d->hash_f(key) % d->total;
 	j = 0;
 	while (EXISTS(d->ents[i]))
 	{
