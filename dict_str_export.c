@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 06:37:49 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/10 18:26:13 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/10 19:17:36 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ char		**dict_str_export(t_dict *d, char *sep)
 	while (dict_iter(d, &ent, &n, DICT_USED))
 	{
 		keylen = ft_strlen(ent->key);
-		MALLOC_N(*ret, 2 + keylen + ent->val.used);
-		*ret = ft_mempcpy(*ret, ent->key, seplen);
-		*ret = ft_mempcpy(*ret, sep, ft_strlen(sep));
+		MALLOC_N(*ret, 1 + keylen + seplen + ent->val.used);
+		*ret = ft_mempcpy(*ret, ent->key, keylen);
+		*ret = ft_mempcpy(*ret, sep, seplen);
 		*ret = ft_mempcpy(*ret, ent->val.data, ent->val.used);
 		**ret = '\0';
-		*ret -= 1 + keylen + ent->val.used + seplen;
+		*ret -= keylen + seplen + ent->val.used;
 		ret++;
 		ent++;
 	}

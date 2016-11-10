@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 20:29:10 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/10 18:25:09 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/10 19:17:37 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	size_cmp(t_dict *d, size_t n, int type)
 		cmp = d->total - d->used - d->del;
 	else
 		return (0);
-	return (cmp > n);
+	return (n > cmp);
 }
 
 int			dict_iter(t_dict *d, t_dict_ent **ent, size_t *n, int type)
