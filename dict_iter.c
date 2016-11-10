@@ -6,13 +6,13 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 20:29:10 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/10 20:14:32 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/10 20:46:20 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libdict_intern.h"
 
-static int	iter_type(t_dict_ent *ent, int type)
+static int		iter_type(t_dict_ent *ent, int type)
 {
 	if (type == DICT_EMPTY)
 		return (EMPTY((*ent)));
@@ -27,7 +27,7 @@ static int	iter_type(t_dict_ent *ent, int type)
 	return (0);
 }
 
-static int	size_cmp(t_dict *d, size_t n, int type)
+static size_t	size_cmp(t_dict *d, int type)
 {
 	size_t	cmp;
 
@@ -43,12 +43,12 @@ static int	size_cmp(t_dict *d, size_t n, int type)
 		cmp = d->total - d->used - d->del;
 	else
 		return (0);
-	return (n > cmp);
+	return (cmp);
 }
 
-int			dict_iter(t_dict *d, t_dict_ent **ent, size_t *n, int type)
+int				dict_iter(t_dict *d, t_dict_ent **ent, size_t *n, int type)
 {
-	if (size_cmp(d, *n, type))
+	if (*n > size_cmp(d, type))
 		return (0);
 	while ((size_t)(*ent - d->ents) < d->total)
 	{

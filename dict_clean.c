@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 19:18:47 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/10 19:24:29 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/10 21:08:35 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ void		dict_clean(t_dict *d)
 	n = 0;
 	ent = d->ents;
 	while (dict_iter(d, &ent, &n, DICT_EXIST))
-		dict_ent_clean(d, ent++);
+		free(ent++->val.data);
 }

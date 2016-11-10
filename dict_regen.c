@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 03:33:32 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/10 20:08:27 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/10 20:56:53 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,28 @@
 void	dict_regen(t_dict *d, size_t grow)
 {
 	t_dict		new;
-	size_t		i;
+	t_dict_ent	*ent;
+	size_t		n;
 
 	if (d->total == 1)
 		grow = 4;
 	else
 		grow = grow ? grow * DICT_GROWTH_FACTOR * d->total : d->total;
 	dict_init(&new, grow, d->hash_f, d->cmp_f);
-	i = 0;
-	while (i < d->total)
+	n = 0;
+	ent = d->ents;
+	while (dict_iter(d, &ent, &n, DICT_DEL))
 	{
-		if (USED(d->ents[i]))
-			dict_vect_add(&new, d->ents[i].key, d->ents[i].val);
-		else if (DELETED(d->ents[i]))
-		{
-			d->ents[i].val.used = 0;
-			d->del--;
-		}
-		i++;
+		ent->key = NULL;
+		free(ent++->val.data);
+	}
+	d->del = 0;
+	n = 0;
+	ent = d->ents;
+	while (dict_iter(d, &ent, &n, DICT_USED))
+	{
+		dict_vect_add(&new, ent->key, ent->val);
+		ent++;
 	}
 	d->total = new.total;
 	d->used = new.used;
