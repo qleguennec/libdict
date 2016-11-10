@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 00:15:41 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/10 20:07:31 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/10 22:24:57 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # define DICT_EXIST		1 << 2
 # define DICT_DEL		1 << 3
 # define DICT_USED		1 << 4
+
+# define DICT_GROWTH_FACTOR GROWTH_FACTOR
 
 typedef struct		s_dict_ent
 {
