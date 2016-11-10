@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 05:14:12 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/10 00:01:40 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/10 04:15:55 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ void		dict_free(t_dict *d)
 	free(d->ents);
 	d->used = 0;
 	d->total = 0;
-	lstfree(d->fl);
+	lstfree(d->free);
 }

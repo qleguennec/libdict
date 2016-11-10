@@ -6,22 +6,23 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 00:35:37 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/09 22:54:10 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/10 06:49:34 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libdict.h"
+#include "libdict_intern.h"
 
 size_t		dict_find_slot(t_dict *d, void *key)
 {
 	size_t	i;
+	long	j;
 
 	i = d->hashf(key) % d->total;
-	while (d->ents[i].key)
+	j = 0;
+	while (!AVAIL(d->ents[i]))
 	{
-		if (!d->cmp(key, d->ents[i].key))
-			return (i);
-		i = (i + 1) % d->total;
+		j++;
+		i = (i + j * j) % d->total;
 	}
 	return (i);
 }

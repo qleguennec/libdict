@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dict_str_import.c                                  :+:      :+:    :+:   */
+/*   dict_del_iter.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/09 05:24:42 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/10 04:15:41 by qle-guen         ###   ########.fr       */
+/*   Created: 2016/11/09 20:29:10 by qle-guen          #+#    #+#             */
+/*   Updated: 2016/11/10 05:08:20 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libdict.h"
 #include "libdict_intern.h"
-#include "../libft/malloc.h"
-#include "../libft/libft.h"
 
-int		dict_str_import(t_dict *d, char *s, char *sep)
+int		dict_del_iter(t_dict *d, t_dict_ent **ent, size_t *n)
 {
-	char	*s1;
-	char	*key;
-
-	s1 = ft_strstr(s, sep);
-	if (!s1)
+	if (*n > d->del)
 		return (0);
-	MALLOC_N(key, 1 + (s1 - s));
-	lstadd(&d->free, key);
-	ft_memcpy(key, s, s1 - s);
-	key[s1 - s] = '\0';
-	dict_str_add(d, key, s1 + ft_strlen(sep));
-	return (1);
+	while ((size_t)(*ent - d->ents) < d->total)
+	{
+		if (AVAIL((**ent)))
+		{
+			(*n)++;
+			return (1);
+		}
+		(*ent)++;
+	}
+	return (0);
 }

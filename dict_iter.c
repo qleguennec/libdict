@@ -6,11 +6,11 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 20:29:10 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/09 21:53:24 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/10 05:00:31 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libdict.h"
+#include "libdict_intern.h"
 
 int		dict_iter(t_dict *d, t_dict_ent **ent, size_t *n)
 {
@@ -18,7 +18,7 @@ int		dict_iter(t_dict *d, t_dict_ent **ent, size_t *n)
 		return (0);
 	while ((size_t)(*ent - d->ents) < d->total)
 	{
-		if ((*ent)->key)
+		if (USED((**ent)))
 		{
 			(*n)++;
 			return (1);

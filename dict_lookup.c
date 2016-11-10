@@ -6,18 +6,25 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 00:46:39 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/09 03:01:54 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/10 06:49:41 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libdict.h"
+#include "libdict_intern.h"
 
 t_dict_ent		*dict_lookup(t_dict *d, void *key)
 {
 	size_t		i;
-	t_dict_ent	*ret;
+	long		j;
 
-	i = dict_find_slot(d, key);
-	ret = d->ents + i;
-	return (ret->key ? ret : NULL);
+	i = d->hashf(key) % d->total;
+	j = 0;
+	while (USED(d->ents[i]))
+	{
+		if (MATCH(d->ents[i], key))
+			return (&d->ents[i]);
+		j++;
+		i = (i + j * j) % d->total;
+	}
+	return (NULL);
 }

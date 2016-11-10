@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 06:15:03 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/09 06:29:46 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/10 04:14:23 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,17 @@ void		lstfree(t_dict_fl *fl)
 	if (!fl)
 		return ;
 	l = fl->next;
-	free(fl->p);
+	free(fl->mem);
 	free(fl);
 	lstfree(l);
 }
 
-void		lstadd(t_dict *d, void *p)
+void		lstadd(t_dict_fl **fl, void *mem)
 {
-	t_dict_fl	*fl;
+	t_dict_fl	*new;
 
-	fl = ft_memalloc(sizeof(*fl));
-	fl->p = p;
-	if (d->fl)
-		fl->next = d->fl;
-	d->fl = fl;
+	new = ft_memalloc(sizeof(*fl));
+	new->mem = mem;
+	new->next = *fl;
+	*fl = new;
 }
