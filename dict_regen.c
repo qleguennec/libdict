@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 03:33:32 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/10 18:35:01 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/10 19:55:36 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@ void	dict_regen(t_dict *d, size_t grow)
 	t_dict		new;
 	size_t		i;
 
-	dict_init(&new, d->total + grow * DICT_GROWTH_FACTOR, d->hash_f, d->cmp_f);
+	if (d->total == 1)
+		grow = 4;
+	else
+		grow = grow ? grow * DICT_GROWTH_FACTOR * d->total : d->total;
+	dict_init(&new, grow, d->hash_f, d->cmp_f);
 	i = 0;
 	while (i < d->total)
 	{

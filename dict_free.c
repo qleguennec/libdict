@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dict_mem_reuse.c                                   :+:      :+:    :+:   */
+/*   dict_free.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/10 17:57:30 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/10 19:48:06 by qle-guen         ###   ########.fr       */
+/*   Created: 2016/11/10 19:25:17 by qle-guen          #+#    #+#             */
+/*   Updated: 2016/11/10 19:28:33 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libdict.h"
 
-void		dict_mem_reuse(t_dict *d, t_dict_ent *ent)
+void		dict_free(t_dict *d)
 {
-	t_list	*l;
-
-	if (!d->avail)
-		return ;
-	if (!(l = ft_lstpop(&d->avail)))
-		return ;
-	ent->val.data = l->mem;
-	ent->val.total = l->size;
-	ent->val.used = 0;
-	free(l);
+	dict_clean(d);
+	free(d->ents);
+	ft_lstfree(d->free);
+	ft_lstfree(d->avail);
 }
