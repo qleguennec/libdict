@@ -6,23 +6,17 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 03:33:32 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/10 20:56:53 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/10 21:10:52 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libdict_intern.h"
 
-void	dict_regen(t_dict *d, size_t grow)
+static void		fill(t_dict *d, t_dict *new)
 {
-	t_dict		new;
 	t_dict_ent	*ent;
 	size_t		n;
 
-	if (d->total == 1)
-		grow = 4;
-	else
-		grow = grow ? grow * DICT_GROWTH_FACTOR * d->total : d->total;
-	dict_init(&new, grow, d->hash_f, d->cmp_f);
 	n = 0;
 	ent = d->ents;
 	while (dict_iter(d, &ent, &n, DICT_DEL))
@@ -35,9 +29,21 @@ void	dict_regen(t_dict *d, size_t grow)
 	ent = d->ents;
 	while (dict_iter(d, &ent, &n, DICT_USED))
 	{
-		dict_vect_add(&new, ent->key, ent->val);
+		dict_vect_add(new, ent->key, ent->val);
 		ent++;
 	}
+}
+
+void			dict_regen(t_dict *d, size_t grow)
+{
+	t_dict		new;
+
+	if (d->total == 1)
+		grow = 4;
+	else
+		grow = grow ? grow * DICT_GROWTH_FACTOR * d->total : d->total;
+	dict_init(&new, grow, d->hash_f, d->cmp_f);
+	fill(d, &new);
 	d->total = new.total;
 	d->used = new.used;
 	free(d->ents);
