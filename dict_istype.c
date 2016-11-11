@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dict_str_set.c                                     :+:      :+:    :+:   */
+/*   dict_istype.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/11 02:35:00 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/11 02:35:46 by qle-guen         ###   ########.fr       */
+/*   Created: 2016/11/11 16:14:20 by qle-guen          #+#    #+#             */
+/*   Updated: 2016/11/11 20:01:23 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libdict.h"
+#include "libdict_intern.h"
 
-void		dict_str_set(t_dict *d, void *key, char *val)
+int		dict_istype(t_dict_ent *ent, int type)
 {
-	return (dict_set(d, key, val, ft_strlen(val)));
+	if (type == DICT_DELETED)
+		return (DELETED((*ent)));
+	if (type == DICT_USED)
+		return (USED((*ent)));
+	if (type == DICT_EXIST)
+		return (EXIST((*ent)));
+	if (type == DICT_EMPTY)
+		return (EMPTY((*ent)));
+	if (type == DICT_AVAIL)
+		return (AVAIL((*ent)));
+	return (0);
 }

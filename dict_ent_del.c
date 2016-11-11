@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 21:46:21 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/11 14:41:07 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/11 20:32:47 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void	dict_ent_del(t_dict *d, t_dict_ent *ent)
 {
-	if ((float)d->del / (float)d->total > REGEN_TRESHOLD)
-		dict_regen(d, 0);
+	if (USED((*ent)))
+	{
+		d->del++;
+		d->used--;
+	}
 	ent->val.used = 0;
-	d->del++;
-	d->used--;
 }

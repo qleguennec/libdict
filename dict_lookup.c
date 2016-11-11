@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 00:46:39 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/10 17:38:15 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/11 20:36:09 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,5 @@
 
 t_dict_ent		*dict_lookup(t_dict *d, void *key)
 {
-	size_t		i;
-	long		j;
-
-	i = d->hash_f(key) % d->total;
-	j = 0;
-	while (USED(d->ents[i]))
-	{
-		if (MATCH(d->ents[i], key))
-			return (&d->ents[i]);
-		j++;
-		i = (i + j * j) % d->total;
-	}
-	return (NULL);
+	return (dict_find_match(d, key, DICT_EXIST));
 }

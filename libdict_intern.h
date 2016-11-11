@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 06:20:55 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/11 04:30:26 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/11 20:03:00 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 
 # include "libdict.h"
 
+# define DELETED(e)				(e.key != NULL && e.val.used == 0)
 # define USED(e)				(e.key != NULL && e.val.used != 0)
 # define EXIST(e)				(e.key != NULL)
-# define AVAIL(e)				(e.val.used == 0)
-# define DELETED(e)				(e.key != NULL && e.val.used == 0)
 # define EMPTY(e)				(e.key == NULL)
+# define AVAIL(e)				(e.val.used == 0)
 
 # define MATCH(e, k)			(!d->cmp_f(e.key, k))
 
-# define GROW_TRESHOLD			1.0 / DICT_GROWTH_FACTOR
-# define REGEN_TRESHOLD			1.0 / 4.0
+# define GROW_THRESHOLD			1.0 / DICT_GROWTH_FACTOR
+# define REGEN_THRESHOLD		1.0 / 2.0
 # define HASH_FACTOR			1000003
 
 #endif
