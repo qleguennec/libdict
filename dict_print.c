@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dict_dup.c                                         :+:      :+:    :+:   */
+/*   dict_print.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/11 02:54:37 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/11 04:23:22 by qle-guen         ###   ########.fr       */
+/*   Created: 2016/11/11 04:39:04 by qle-guen          #+#    #+#             */
+/*   Updated: 2016/11/11 04:45:21 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libdict_intern.h"
+#include "libdict.h"
+#include "../libft/libft.h"
+#include <unistd.h>
 
-void	dict_dup(t_dict *dest, t_dict *src)
+void		dict_print(t_dict *d, char *sep, char *nl)
 {
-	t_dict_ent	*ent;
-	size_t		n;
+	char	**exp;
+	size_t	i;
 
-	n = 0;
-	ent = src->ents;
-	while (dict_iter(src, &ent, &n, DICT_USED))
-		dict_ent_add(dest, ent++);
+	exp = dict_str_export(d, sep);
+	i = 0;
+	while (exp[i])
+	{
+		write(1, exp[i], ft_strlen(exp[i]));
+		write(1, nl, ft_strlen(nl));
+		i++;
+	}
+	ft_arr_free((void **)exp);
 }
