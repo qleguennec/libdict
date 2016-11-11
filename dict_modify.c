@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dict_clean.c                                       :+:      :+:    :+:   */
+/*   dict_modify.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/10 19:18:47 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/11 03:17:41 by qle-guen         ###   ########.fr       */
+/*   Created: 2016/11/11 13:20:01 by qle-guen          #+#    #+#             */
+/*   Updated: 2016/11/11 13:24:18 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libdict.h"
 
-void		dict_clean(t_dict *d)
+int			dict_modify(t_dict *d, void *key, void (*f)(t_dict *, t_dict_ent *))
 {
-	size_t		n;
 	t_dict_ent	*ent;
 
-	n = 0;
-	ent = d->ents;
-	while (dict_iter(d, &ent, &n, DICT_EXIST))
-		free(ent++->val.data);
+	ent = dict_lookup(d, key);
+	if (!ent)
+		return (0);
+	f(d, ent);
+	return (1);
 }

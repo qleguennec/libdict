@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 06:37:49 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/11 01:31:12 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/11 13:18:23 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char		**dict_str_export(t_dict *d, char *sep)
 	n = 0;
 	ent = d->ents;
 	seplen = ft_strlen(sep);
-	while (dict_iter(d, &ent, &n, DICT_USED))
+	while (n < d->used && dict_iter(d, &ent, DICT_USED))
 	{
 		keylen = ft_strlen(ent->key);
 		MALLOC_N(*ret, 1 + keylen + seplen + ent->val.used);
@@ -36,6 +36,7 @@ char		**dict_str_export(t_dict *d, char *sep)
 		*ret -= keylen + seplen + ent->val.used;
 		ret++;
 		ent++;
+		n++;
 	}
 	*ret = NULL;
 	return (ret - d->used);

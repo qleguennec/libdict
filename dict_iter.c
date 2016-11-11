@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 20:29:10 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/10 20:46:20 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/11 13:05:46 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,36 +27,12 @@ static int		iter_type(t_dict_ent *ent, int type)
 	return (0);
 }
 
-static size_t	size_cmp(t_dict *d, int type)
+int				dict_iter(t_dict *d, t_dict_ent **ent, int type)
 {
-	size_t	cmp;
-
-	if (type == DICT_USED)
-		cmp = d->used;
-	else if (type == DICT_EXIST)
-		cmp = d->del + d->used;
-	else if (type == DICT_AVAIL)
-		cmp = d->total - d->used;
-	else if (type == DICT_DEL)
-		cmp = d->del;
-	else if (type == DICT_EMPTY)
-		cmp = d->total - d->used - d->del;
-	else
-		return (0);
-	return (cmp);
-}
-
-int				dict_iter(t_dict *d, t_dict_ent **ent, size_t *n, int type)
-{
-	if (*n > size_cmp(d, type))
-		return (0);
 	while ((size_t)(*ent - d->ents) < d->total)
 	{
 		if (iter_type(*ent, type))
-		{
-			(*n)++;
 			return (1);
-		}
 		(*ent)++;
 	}
 	return (0);

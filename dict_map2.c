@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dict_ent_cpy.c                                     :+:      :+:    :+:   */
+/*   dict_map2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/09 02:55:37 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/11 03:13:18 by qle-guen         ###   ########.fr       */
+/*   Created: 2016/11/11 13:58:04 by qle-guen          #+#    #+#             */
+/*   Updated: 2016/11/11 14:15:32 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libdict_intern.h"
+#include "libdict.h"
 
-void		dict_ent_cpy(t_dict *d, t_dict_ent *ent)
+void		dict_map2
+	(t_dict *src, t_dict *dest, int type, void (*f)(t_dict *d, t_dict_ent *ent))
 {
-	t_dict_ent	*new;
+	t_dict_ent	*ent;
 
-	if ((float)d->used / (float)d->total > GROW_TRESHOLD)
-		dict_regen(d, 1);
-	new = dict_find_empty(d, ent->key);
-	if (DELETED((*new)))
-		d->del--;
-	new->key = ent->key;
-	new->val = ent->val;
-	d->used++;
+	ent = src->ents;
+	while (dict_size(src, type) != dict_size(dest, type)
+			&& dict_iter(src, &ent, type))
+		f(dest, ent++);
 }
