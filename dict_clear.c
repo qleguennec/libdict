@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 21:35:50 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/11 21:37:24 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/11 21:57:33 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	dict_clear(t_dict *d)
 {
-	dict_map(d, DICT_EXIST, &dict_ent_del);
+	dict_map(d, DICT_USED, &dict_ent_del);
 }
