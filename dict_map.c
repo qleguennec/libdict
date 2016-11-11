@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libdict.h"
+#include "libdict_intern.h"
 
 void		dict_map(t_dict *d, int type, void (*f)(t_dict *, t_dict_ent *))
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libdict.h"
+#include "libdict_intern.h"
 
 int			dict_modify
 	(t_dict *d, void *key, int type, void (*f)(t_dict *, t_dict_ent *))

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libdict.h"
+#include "libdict_intern.h"
 
 void		dict_init
 	(t_dict *d, size_t len, long (*hash_f)(void *), t_cmp_f cmp_f)

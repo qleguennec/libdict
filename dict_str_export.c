@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libdict.h"
+#include "libdict_intern.h"
 #include "../libft/malloc.h"
 
 char		**dict_str_export(t_dict *d, char *sep)
