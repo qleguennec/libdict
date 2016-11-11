@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 00:15:41 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/11 21:31:13 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/11 21:34:17 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct		s_dict
 }					t_dict;
 
 char				**dict_str_export(t_dict *d, char *sep);
+int					dict_del(t_dict *d, void *key);
 int					dict_istype(t_dict_ent *ent, int type);
 int					dict_iter(t_dict *d, t_dict_ent **ent, int type);
 int					dict_modify(t_dict *d, void *key, int type, void (*f)(t_dict *, t_dict_ent *));
