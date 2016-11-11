@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 00:15:41 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/11 21:02:39 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/11 21:27:12 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,9 @@ void				dict_map(t_dict *d, int type, void (*f)(t_dict *, t_dict_ent *));
 void				dict_map2(t_dict *src, t_dict *dest, int type, void (*f)(t_dict *d, t_dict_ent *ent));
 void				dict_print(t_dict *d, char *sep, char *nl);
 void				dict_regen(t_dict *d);
+void				dict_set(t_dict *d, void *key, void *val, size_t size);
 void				dict_str_add(t_dict *d, void *key, char *val);
 void				dict_str_init(t_dict *d, size_t len);
+void				dict_str_set(t_dict *d, void *key, char *val);
 
 #endif
