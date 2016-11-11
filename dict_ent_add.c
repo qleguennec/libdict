@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dict_cpy.c                                         :+:      :+:    :+:   */
+/*   dict_ent_add.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/11 02:54:37 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/11 03:15:01 by qle-guen         ###   ########.fr       */
+/*   Created: 2016/11/11 03:15:20 by qle-guen          #+#    #+#             */
+/*   Updated: 2016/11/11 03:16:43 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libdict_intern.h"
 
-void		dict_cpy(t_dict *dest, t_dict *src)
+void		dict_ent_add(t_dict *d, t_dict_ent *ent)
 {
-	t_dict_ent	*ent;
-	size_t		n;
-
-	n = 0;
-	ent = src->ents;
-	while (dict_iter(src, &ent, &n, DICT_USED))
-	{
-		dict_ent_cpy(dest, ent);
-		ent++;
-	}
+	dict_add(d, ent->key, ent->val.data, ent->val.used);
 }
