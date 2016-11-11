@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 02:22:36 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/10 22:42:42 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/11 02:02:10 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void		dict_str_add(t_dict *d, void *key, char *val)
 {
-	dict_add(d, key, val, ft_strlen(val));
+	dict_add(d, key, val, ft_strlen(val) + 1);
 }
