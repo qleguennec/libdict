@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 03:33:32 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/10 23:09:05 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/11 02:58:55 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,7 @@ static void		fill(t_dict *d, t_dict *new)
 		free(ent++->val.data);
 	}
 	d->del = 0;
-	n = 0;
-	ent = d->ents;
-	while (dict_iter(d, &ent, &n, DICT_USED))
-	{
-		dict_vect_add(new, ent->key, ent->val);
-		ent++;
-	}
+	dict_cpy(new, d);
 }
 
 void			dict_regen(t_dict *d, int grow)
