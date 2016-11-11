@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 03:33:32 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/11 19:49:59 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/11 20:49:49 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ size_t			newsize(t_dict *d)
 {
 	if (d->total == 1)
 		return (16);
-	if ((float)d->used / (float)d->total > GROW_THRESHOLD)
-		return (d->total * GROWTH_FACTOR);
-	if ((float)d->del / (float)d->total > REGEN_THRESHOLD)
+	if ((float)(d->used + d->del) / (float)d->total > GROW_THRESHOLD)
 		return (d->total * GROWTH_FACTOR);
 	return (0);
 }

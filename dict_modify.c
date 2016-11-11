@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 13:20:01 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/11 20:30:21 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/11 20:43:17 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int			dict_modify
 {
 	t_dict_ent	*ent;
 
+	dict_regen(d);
 	ent = dict_find_match(d, key, type);
 	if (!ent)
 		return (0);
