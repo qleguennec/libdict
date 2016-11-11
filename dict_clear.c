@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dict_del.c                                         :+:      :+:    :+:   */
+/*   dict_clear.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/11 20:50:53 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/11 21:35:45 by qle-guen         ###   ########.fr       */
+/*   Created: 2016/11/11 21:35:50 by qle-guen          #+#    #+#             */
+/*   Updated: 2016/11/11 21:37:24 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libdict_intern.h"
 
-int		dict_del(t_dict *d, void *key)
+void	dict_clear(t_dict *d)
 {
-	return (dict_modify(d, key, DICT_EXIST, &dict_ent_del));
+	dict_map(d, DICT_EXIST, &dict_ent_del);
 }
