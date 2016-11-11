@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dict_lookup.c                                      :+:      :+:    :+:   */
+/*   dict_set.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/09 00:46:39 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/11 21:21:38 by qle-guen         ###   ########.fr       */
+/*   Created: 2016/11/11 21:06:02 by qle-guen          #+#    #+#             */
+/*   Updated: 2016/11/11 21:24:59 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libdict_intern.h"
 
-t_dict_ent		*dict_lookup(t_dict *d, void *key)
+void		dict_set(t_dict *d, void *key, void *val, size_t size)
 {
-	return (dict_find_match(d, key, DICT_EXIST));
+	t_dict_ent		*ent;
+
+	if (!size)
+		return ;
+	ent = dict_lookup(d, key);
+	if (!ent)
+		return (dict_add(d, key, val, size));
+	dict_regen(d);
+	if (DELETED((*ent)))
+		d->del--;
+	ent->val.used = 0;
+	vect_add(&ent->val, val, size);
+	d->used++;
 }
