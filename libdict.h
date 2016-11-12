@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 00:15:41 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/12 17:15:27 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/12 17:24:39 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void			dict_clear(t_dict *d);
 void			dict_dup(t_dict *dest, t_dict *src);
 void			dict_ent_add(t_dict *d, t_dict_ent *ent);
 void			dict_ent_del(t_dict *d, t_dict_ent *ent);
-void			dict_ent_dup(t_dict *d, t_dict_ent *ent);
 void			dict_ent_free(t_dict *d, t_dict_ent *ent);
 void			dict_free(t_dict *d);
 void			dict_init(t_dict *d, size_t len, long (*hashf)(void *), t_cmp_f cmp_f);

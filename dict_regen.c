@@ -6,13 +6,13 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 03:33:32 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/12 17:16:15 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/12 17:30:46 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libdict_intern.h"
 
-size_t			newsize(t_dict *d)
+static size_t	regen_newsize(t_dict *d)
 {
 	if (d->total == 1)
 		return (16);
@@ -28,11 +28,11 @@ void			dict_regen(t_dict *d)
 	size_t		size;
 	t_dict		new;
 
-	if (!(size = newsize(d)))
+	if (!(size = regen_newsize(d)))
 		return ;
 	dict_init(&new, size, d->hash_f, d->cmp_f);
 	dict_map(d, DICT_DELETED, &dict_ent_free);
-	dict_map2(&new, d, DICT_USED, &dict_ent_dup);
+	dict_dup(&new, d);
 	free(d->ents);
 	d->ents = new.ents;
 	d->del = new.del;
