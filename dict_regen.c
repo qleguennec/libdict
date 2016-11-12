@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 03:33:32 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/12 17:30:46 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/12 21:22:16 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void			dict_regen(t_dict *d)
 	if (!(size = regen_newsize(d)))
 		return ;
 	dict_init(&new, size, d->hash_f, d->cmp_f);
+	dict_cpy(&new, d);
 	dict_map(d, DICT_DELETED, &dict_ent_free);
-	dict_dup(&new, d);
 	free(d->ents);
 	d->ents = new.ents;
 	d->del = new.del;

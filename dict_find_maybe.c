@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dict_dup.c                                         :+:      :+:    :+:   */
+/*   dict_find_maybe.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/11 21:28:07 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/12 21:21:48 by qle-guen         ###   ########.fr       */
+/*   Created: 2016/11/12 21:27:17 by qle-guen          #+#    #+#             */
+/*   Updated: 2016/11/12 21:30:28 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libdict_intern.h"
 
-void		dict_dup(t_dict *dest, t_dict *src)
+t_dict_ent	*dict_find_maybe(t_dict *d, void *key, int type)
 {
-	dict_map2(dest, src, DICT_USED, &dict_ent_add);
+	size_t	i;
+	long	j;
+
+	i = d->hash_f(key) % d->total;
+	j = 0;
+	while (dict_istype(&d->ents[i], type))
+	{
+		if (USED(d->ents[i]) && MATCH(d->ents[i], key))
+			return (&d->ents[i]);
+		j++;
+		i = (i + j * j) % d->total;
+	}
+	return (&d->ents[i]);
 }
