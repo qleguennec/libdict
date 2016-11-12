@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 05:24:42 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/11 23:37:03 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/11 23:42:56 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int		dict_str_import(t_dict *d, char *s, char *sep)
 {
 	char	*s1;
 	char	*key;
+	char	*val;
 
 	s1 = ft_strstr(s, sep);
 	if (!s1)
@@ -25,6 +26,7 @@ int		dict_str_import(t_dict *d, char *s, char *sep)
 	ft_lstadd(&d->free, key, 0);
 	ft_memcpy(key, s, s1 - s);
 	key[s1 - s] = '\0';
-	dict_str_set(d, key, s1 + ft_strlen(sep));
+	val = s1 + ft_strlen(sep);
+	dict_set(d, key, val, 1 + ft_strlen(val));
 	return (1);
 }
