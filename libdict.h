@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 00:15:41 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/12 14:41:37 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/12 17:15:27 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_dict_ent		*dict_lookup(t_dict *d, void *key);
 void			*dict_fmap(t_dict *d, int type, void *(*f)(t_dict *d, void *), void *ctxt);
 void			dict_add(t_dict *d, void *key, void *val, size_t size);
 void			dict_clear(t_dict *d);
-void			dict_dup(t_dict *src, t_dict *dest);
+void			dict_dup(t_dict *dest, t_dict *src);
 void			dict_ent_add(t_dict *d, t_dict_ent *ent);
 void			dict_ent_del(t_dict *d, t_dict_ent *ent);
 void			dict_ent_dup(t_dict *d, t_dict_ent *ent);
@@ -64,7 +64,7 @@ void			dict_ent_free(t_dict *d, t_dict_ent *ent);
 void			dict_free(t_dict *d);
 void			dict_init(t_dict *d, size_t len, long (*hashf)(void *), t_cmp_f cmp_f);
 void			dict_map(t_dict *d, int type, void (*f)(t_dict *, t_dict_ent *));
-void			dict_map2(t_dict *src, t_dict *dest, int type, void (*f)(t_dict *d, t_dict_ent *ent));
+void			dict_map2(t_dict *dest, t_dict *src, int type, void (*f)(t_dict *d, t_dict_ent *ent));
 void			dict_print(t_dict *d, char *sep, char *nl);
 void			dict_regen(t_dict *d);
 void			dict_set(t_dict *d, void *key, void *val, size_t size);
