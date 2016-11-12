@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 06:37:49 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/11 13:18:23 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/12 23:52:46 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,22 @@ char		**dict_str_export(t_dict *d, char *sep)
 	size_t		seplen;
 	t_dict_ent	*ent;
 
-	MALLOC_N(ret, d->used + 1);
+	MALLOC_N(ret, (d->used + 1));
 	n = 0;
 	ent = d->ents;
 	seplen = ft_strlen(sep);
 	while (n < d->used && dict_iter(d, &ent, DICT_USED))
 	{
 		keylen = ft_strlen(ent->key);
-		MALLOC_N(*ret, 1 + keylen + seplen + ent->val.used);
-		*ret = ft_mempcpy(*ret, ent->key, keylen);
-		*ret = ft_mempcpy(*ret, sep, seplen);
-		*ret = ft_mempcpy(*ret, ent->val.data, ent->val.used);
-		**ret = '\0';
-		*ret -= keylen + seplen + ent->val.used;
-		ret++;
+		MALLOC_N(ret[n], 1 + keylen + seplen + ent->val.used);
+		ret[n] = ft_mempcpy(ret[n], ent->key, keylen);
+		ret[n] = ft_mempcpy(ret[n], sep, seplen);
+		ret[n] = ft_mempcpy(ret[n], ent->val.data, ent->val.used);
+		*(ret[n]) = '\0';
+		ret[n] -= keylen + seplen + ent->val.used;
 		ent++;
 		n++;
 	}
-	*ret = NULL;
-	return (ret - d->used);
+	ret[n] = NULL;
+	return (ret);
 }
