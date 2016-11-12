@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 00:15:41 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/11 21:38:05 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/12 14:41:37 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ size_t   		dict_size(t_dict *d, int type);
 t_dict_ent		*dict_find_ent(t_dict *d, void *key, int type);
 t_dict_ent		*dict_find_match(t_dict *d, void *key, int type);
 t_dict_ent		*dict_lookup(t_dict *d, void *key);
+void			*dict_fmap(t_dict *d, int type, void *(*f)(t_dict *d, void *), void *ctxt);
 void			dict_add(t_dict *d, void *key, void *val, size_t size);
 void			dict_clear(t_dict *d);
 void			dict_dup(t_dict *src, t_dict *dest);
