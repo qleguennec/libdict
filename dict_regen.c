@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 03:33:32 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/11 22:05:57 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/12 01:23:06 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,8 @@ void			dict_regen(t_dict *d)
 	dict_map(d, DICT_DELETED, &dict_ent_free);
 	dict_map2(d, &new, DICT_USED, &dict_ent_dup);
 	free(d->ents);
-	ft_memcpy(d, &new, sizeof(*d) - sizeof(*d->free));
+	d->ents = new.ents;
+	d->del = new.del;
+	d->used = new.used;
+	d->total = new.total;
 }
