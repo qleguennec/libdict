@@ -6,13 +6,13 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 12:48:21 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/11 20:03:45 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/14 14:51:37 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libdict_intern.h"
 
-size_t   dict_size(t_dict *d, int type)
+size_t	dict_size(t_dict *d, int type)
 {
 	if (type & DICT_DELETED)
 		return (d->del);
