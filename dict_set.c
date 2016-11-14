@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 21:06:02 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/13 19:38:40 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/14 16:50:37 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@ void		dict_set(t_dict *d, void *key, void *val, size_t size)
 	if (!size)
 		return ;
 	ent = dict_find_maybe(d, key, DICT_EXIST);
-	if (DELETED((*ent)))
-	{
-		d->del--;
+	if (!USED((*ent)))
 		d->used++;
-	}
+	if (DELETED((*ent)))
+		d->del--;
 	ent->key = key;
 	ent->val.used = 0;
 	vect_add(&ent->val, val, size);
