@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 21:27:17 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/14 16:50:49 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/26 13:29:40 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_dict_ent	*dict_find_maybe(t_dict *d, void *key, int type)
 	j = 0;
 	while (dict_istype(&d->ents[i], type))
 	{
-		if (USED(d->ents[i]) && MATCH(d->ents[i], key))
+		if (EXIST(d->ents[i]) && MATCH(d->ents[i], key))
 			return (&d->ents[i]);
 		j++;
 		i = (i + j * j) % d->total;
