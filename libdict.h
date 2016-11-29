@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 00:15:41 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/14 16:15:19 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/28 21:17:20 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,17 @@ typedef struct	s_dict
 	t_list		*free;
 }				t_dict;
 
+# define DICT_IMPORT_ADD	1
+# define DICT_IMPORT_SET	2
+# define DICT_IMPORT_STR	4
+
 char			**dict_str_export(t_dict *d, char *sep);
 int				dict_del(t_dict *d, void *key);
 int				dict_istype(t_dict_ent *ent, int type);
 int				dict_iter(t_dict *d, t_dict_ent **ent, int type);
 int				dict_modify
 	(t_dict *d, void *key, int type, void (*f)(t_dict *, t_dict_ent *));
-int				dict_str_import
-	(t_dict *d, char *s, char *sep, void (*f) (t_dict *, void *, char *));
+int				dict_str_import(t_dict *d, char *s, char *sep, int opts);
 long			dict_str_hash(char *s);
 size_t			dict_size(t_dict *d, int type);
 t_dict_ent		*dict_find_ent(t_dict *d, void *key, int type);

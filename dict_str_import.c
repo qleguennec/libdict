@@ -6,28 +6,34 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 05:24:42 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/25 16:49:19 by qle-guen         ###   ########.fr       */
+/*   Updated: 2016/11/28 21:17:07 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libdict_intern.h"
 #include "../libft/malloc.h"
 
-int	dict_str_import
-	(t_dict *d, char *s, char *sep, void (*f) (t_dict *, void *, char *))
+int	dict_str_import(t_dict *d, char *s, char *sep, int opts)
 {
 	char	*s1;
 	char	*key;
 	char	*val;
+	size_t	len;
 
 	s1 = ft_strstr(s, sep);
 	if (!s1)
 		return (0);
-	MALLOC_N(key, 1 + (s1 - s));
+	len = (opts & DICT_IMPORT_STR) + s1 - s;
+	MALLOC_N(key, len);
 	ft_lstadd(&d->free, key, 0);
 	ft_memcpy(key, s, s1 - s);
-	key[s1 - s] = '\0';
+	if (opts & DICT_IMPORT_STR)
+		key[s1 - s] = '\0';
 	val = s1 + ft_strlen(sep);
-	f(d, key, val);
+	len = (opts & DICT_IMPORT_STR) + ft_strlen(val);
+	if (opts & DICT_IMPORT_ADD)
+		dict_add(d, key, val, len);
+	else if (opts & DICT_IMPORT_SET)
+		dict_set(d, key, val, len);
 	return (1);
 }
