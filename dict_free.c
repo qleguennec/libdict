@@ -6,16 +6,28 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 19:25:17 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/12 21:51:20 by qle-guen         ###   ########.fr       */
+/*   Updated: 2017/03/08 14:37:00 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libdict_intern.h"
+
+static void
+	listfree
+	(t_list *l)
+{
+	t_list	*next;
+
+	next = l->next;
+	free(l->p);
+	free(l);
+	listfree(next);
+}
 
 void		dict_free(t_dict *d)
 {
 	dict_clear(d);
 	dict_map(d, DICT_DELETED, &dict_ent_free);
 	free(d->ents);
-	ft_lstfree(d->free);
+	listfree(d->free);
 }

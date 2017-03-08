@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 05:24:42 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/28 21:17:07 by qle-guen         ###   ########.fr       */
+/*   Updated: 2017/03/08 14:54:48 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,21 @@
 
 int	dict_str_import(t_dict *d, char *s, char *sep, int opts)
 {
-	char	*s1;
 	char	*key;
+	char	*s1;
 	char	*val;
 	size_t	len;
+	t_list	*new;
 
 	s1 = ft_strstr(s, sep);
 	if (!s1)
 		return (0);
 	len = (opts & DICT_IMPORT_STR) + s1 - s;
 	MALLOC_N(key, len);
-	ft_lstadd(&d->free, key, 0);
+	MALLOC1(new);
+	new->p = key;
+	new->next = d->free;
+	d->free = new;
 	ft_memcpy(key, s, s1 - s);
 	if (opts & DICT_IMPORT_STR)
 		key[s1 - s] = '\0';

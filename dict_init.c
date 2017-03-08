@@ -6,16 +6,17 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 03:34:39 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/12 14:41:05 by qle-guen         ###   ########.fr       */
+/*   Updated: 2017/03/08 14:40:13 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libdict_intern.h"
+#include "../libft/malloc.h"
 
 void		dict_init
 	(t_dict *d, size_t len, long (*hash_f)(void *), t_cmp_f cmp_f)
 {
-	d->ents = ft_memalloc(len * sizeof(*d->ents));
+	MALLOC_ZERO_N(d->ents, len);
 	d->total = len;
 	d->used = 0;
 	d->del = 0;
