@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 00:15:41 by qle-guen          #+#    #+#             */
-/*   Updated: 2016/11/30 19:14:28 by qle-guen         ###   ########.fr       */
+/*   Updated: 2017/03/09 11:58:40 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,5 @@ void			dict_set(t_dict *d, void *key, void *val, size_t size);
 void			dict_str_add(t_dict *d, void *key, char *val);
 void			dict_str_init(t_dict *d, size_t len);
 void			dict_str_set(t_dict *d, void *key, char *val);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 19:25:17 by qle-guen          #+#    #+#             */
-/*   Updated: 2017/03/08 14:37:00 by qle-guen         ###   ########.fr       */
+/*   Updated: 2017/03/09 11:58:00 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,13 @@ static void
 {
 	t_list	*next;
 
-	next = l->next;
-	free(l->p);
-	free(l);
-	listfree(next);
+	if (l)
+	{
+		next = l->next;
+		free(l->p);
+		free(l);
+		listfree(next);
+	}
 }
 
 void		dict_free(t_dict *d)
