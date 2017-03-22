@@ -6,23 +6,13 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 04:39:04 by qle-guen          #+#    #+#             */
-/*   Updated: 2017/03/19 15:09:42 by qle-guen         ###   ########.fr       */
+/*   Updated: 2017/03/21 15:39:26 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libdict_intern.h"
 #include "../libft/libft.h"
 #include <unistd.h>
-
-static void
-	arrfree
-	(char **exp)
-{
-	while (*exp)
-		free(*exp++);
-	free(*exp);
-	free(exp);
-}
 
 void		dict_print(t_dict *d, char *sep, char *nl)
 {
@@ -36,7 +26,8 @@ void		dict_print(t_dict *d, char *sep, char *nl)
 	{
 		write(1, exp[i], ft_strlen(exp[i]));
 		write(1, nl, ft_strlen(nl));
+		free(exp[i]);
 		i++;
 	}
-	arrfree(exp);
+	free(exp);
 }
