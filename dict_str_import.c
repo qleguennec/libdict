@@ -6,12 +6,11 @@
 /*   By: qle-guen <qle-guen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 05:24:42 by qle-guen          #+#    #+#             */
-/*   Updated: 2017/03/22 14:46:28 by qle-guen         ###   ########.fr       */
+/*   Updated: 2017/05/29 15:01:18 by qle-guen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libdict_intern.h"
-#include "../libft/malloc.h"
 
 int	dict_str_import(t_dict *d, char *s, char *sep, int opts)
 {
@@ -25,8 +24,10 @@ int	dict_str_import(t_dict *d, char *s, char *sep, int opts)
 	if (s1 == NULL || s1 == s)
 		return (0);
 	len = !!(opts & DICT_IMPORT_STR) + s1 - s;
-	MALLOC_N(key, len);
-	MALLOC1(new);
+	if (!(key = malloc(len)))
+		return (0);
+	if (!(new = malloc(sizeof(*new))))
+		return (0);
 	new->p = key;
 	new->next = d->free;
 	d->free = new;
